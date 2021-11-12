@@ -43,11 +43,20 @@ const Usefirebase = () => {
     }, [])
 
     useEffect(()=>{
-        fetch(`https://powerful-ravine-38865.herokuapp.com/users/${user.email}`)
+      fetch(`https://powerful-ravine-38865.herokuapp.com/users/${user.email}`)
         .then(res=>res.json())
-        .then(data=> setAdmin(data.admin))
+        .then(data=> 
+            setAdmin(data.admin))
+            
+        
+       
+       
+       
 
     },[user.email])
+
+
+    
 
     const logOut = () => {
 

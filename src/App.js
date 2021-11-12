@@ -24,6 +24,7 @@ import Addproducts from './Components/Home/Makeadmin/Addproducts/Addproducts';
 import Manageallorders from './Components/Home/Makeadmin/Managallorders/Manageallorders';
 import Manageproducts from './Components/Home/Makeadmin/Manageproducts/Manageproducts';
 import Notfound from './Components/Notfound/Notfound';
+import Adminroute from './Components/Home/Login/Adminroute/Adminroute';
 
 
 
@@ -39,48 +40,48 @@ function App() {
            <Home></Home>
           </Route>
 
-          <Route exact path="/home">
+          <Route  path="/home">
            <Home></Home>
           </Route>
 
-          <Privateroute exact  path="/bikes/:bikeId">
+          <Privateroute   path="/bikes/:bikeId">
           <Purchase></Purchase>
           </Privateroute>
-          <Route exact path="/explore">
+          <Route  path="/explore">
             <Explore></Explore>
           </Route>
-          <Route exact path="/login">
+          <Route  path="/login">
             <Login></Login>
           </Route>
-          <Route exact path="/register">
+          <Route  path="/register">
             <Register></Register>
           </Route>
-          <Route exact path="/pay">
+          <Route  path="/pay">
            <Pay></Pay>
           </Route>
 
-          <Route exact path="/myorders">
+          <Route  path="/myorders">
            <Myorders></Myorders>
           </Route>
 
-          <Route exact path="/review">
+          <Route  path="/review">
            <Review></Review>
           </Route>
 
-          <Route exact path="/makeadmin">
+          <Adminroute  path="/makeadmin">
          <Makeadmin></Makeadmin>
-          </Route>
+          </Adminroute>
 
-          <Route exact path="/addproducts">
+          <Route  path="/addproducts">
          <Addproducts></Addproducts>
           </Route>
 
-          <Route exact path="/manageallorders">
+          <Route  path="/manageallorders">
          <Manageallorders></Manageallorders>
           </Route>
 
 
-          <Route exact path="/manageproducts">
+          <Route  path="/manageproducts">
         <Manageproducts></Manageproducts>
           </Route>
 
