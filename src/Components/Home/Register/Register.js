@@ -50,7 +50,7 @@
                history.push(redirect_uri)
                setUser(res.user)
                setUserName(name)
-               window.location.reload()
+               // window.location.reload()
                setAlert("")
                })
                .catch((error) => {

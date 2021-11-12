@@ -78,9 +78,9 @@ const Usefirebase = () => {
         const user = { email, displayName }
         console.log(user)
         fetch('https://powerful-ravine-38865.herokuapp.com/users', {
-            method: 'POST',
+            method: 'post',
             headers: {
-                'content-type': 'application/json'
+                'content-type':'application/json'
             },
             body: JSON.stringify(user)
         })

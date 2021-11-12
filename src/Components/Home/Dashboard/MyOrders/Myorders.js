@@ -19,7 +19,7 @@ const Myorders = () => {
     fetch(url)
     .then(res=>res.json())
     .then(data=>setOrders(data))
-  },[orders,deleteCount])
+  },[user.email,deleteCount])
        
 
   const handledelete = (id) => {
