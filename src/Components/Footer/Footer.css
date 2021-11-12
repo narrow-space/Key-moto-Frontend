@@ -1,0 +1,61 @@
+.footer-container{
+    background-color: #0F0F0F;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    width: 100vw;
+   
+   
+    min-height: 300px;
+    color: white;
+}
+
+.contact{
+    
+    width: 100%;
+    margin-top: 80px;
+}
+/* .tel-icon{
+    background-color: red;
+   
+   margin: 20px;
+    width: 110px;
+    height: 60px;
+    
+    
+} */
+.tel-icon i{
+    margin-right:50px;
+   
+   
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.link{
+    margin-top: 70px;
+}
+.link ul{
+    padding: 5px;
+    
+    list-style: none;
+   padding-top: 5px;
+    
+    
+}
+
+.link li:hover{
+    color: red;
+}
+/* .link h5{
+    font-size:30px;
+} */
+/* ul li::before{
+    content: "\2022";
+    color: red;
+    font-weight: 600;
+    display: inline-block;
+    margin-left: 1rem;
+    padding: 10px;
+    
+} */

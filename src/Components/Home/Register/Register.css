@@ -1,0 +1,25 @@
+
+ #error{
+    color: red;
+}
+
+
+.already-btn{
+   color:white;
+   font-size: 30px;
+}
+
+.from-btn{
+   width:100%;
+   padding: 20px;
+   border: none;
+   background-color: #FA375D;
+   border-radius:5px;
+   color:white;
+
+}
+
+.input-from input{
+   height: 50px;
+   border-radius:5px ;
+}

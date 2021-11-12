@@ -1,0 +1,130 @@
+.carousel-item{
+    height:100vh;
+    min-height:30px;
+    background-repeat:no-repeat scroll center scroll;
+    -webkit-background-size:cover;
+    background-size: cover;
+
+}
+
+.carousel-item::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background:rgba(0, 0, 0, 0.99);
+    opacity: 0.3;
+}
+
+
+.slider-btn{
+    margin-top: 30px;
+}
+.slider-btn .btn{
+    background-color: #E63619;
+    columns: white;
+    border-radius:5px;
+    padding: .5rem ;
+    font-size: 20px;
+    margin-right: 20px;
+    color: white;
+    
+
+}
+.carousel-caption{
+    bottom: 100px;
+    padding-left:100px;
+    padding-right: 100px;
+} 
+ .carousel-caption h5{
+    font-size: 70px;
+    font-weight: 700;
+    color: #ffffff;
+
+}
+.carousel-caption span{
+    
+    color: red;
+    font-size: large;
+   
+
+
+}
+
+
+
+
+/* .slider-btn .btn:hover{
+    background-color: #121111;
+    color: #FFFFFF;
+
+} */
+.slider-btn .btn-2{
+    background-color:#222222;
+    columns: white;
+    border-radius: 5px;
+    padding: .5rem;
+    font-size: 20px;
+    margin-right: 20px;
+    color:white;
+    
+
+}
+/* .slider-btn .btn-2:hover{
+    background-color:#E63619 ;
+    color: #FFFFFF;
+} */
+
+@media only screen and (max-width:668px) {
+   .res-btn{
+       display: flex;
+       justify-content: center;
+       margin-bottom:-30px;
+       margin-left:2px ;
+       
+       
+   }    
+
+   .carousel-caption h5{
+      
+    font-size:.8rem;
+    font-weight: 400;
+   
+    
+
+                    }
+
+
+     .carousel-item{
+         height: fit-content;
+          
+        }
+        .slider-btn .btn{
+            
+            
+            font-size: .7rem;
+            line-height:.9rem;
+             padding: .2rem 2rem;
+            
+           
+        }
+        .carousel-caption span{
+    
+            color: red;
+            font-size: .9rem;
+            
+           
+        
+        
+        }
+        .carousel-caption{
+            margin-bottom: -50px;
+        }
+
+
+
+
+}
