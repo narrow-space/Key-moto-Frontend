@@ -148,14 +148,15 @@ return (
 <thead>
 <tr>
 <th>Id</th>
-<th>Name</th>
+<th>Product Name</th>
+<th>Customer Name</th>
 <th>Adress</th>
 <th>Phone No.</th>
 
 <th>email</th>
 <th>Status</th>
-<th>Delete</th>
-<th>shipped</th>
+<th>Action</th>
+<th>Action</th>
 
 
 </tr>
@@ -165,13 +166,15 @@ return (
 {
 allorders.map((mo, index) => <tr>
 <td data-lable="Id">{index}</td>
-<td data-lable="Name">{mo.name}</td>
+<td data-lable="Product Name">{mo.name}</td>
+<td data-lable="Customer Name">{mo.displayName}</td>
 <td data-lable="Adress">{mo.adress}</td>
 <td data-lable="Phone No.">{mo.number}</td>
 <td style={{ "textAlign": "right" }} data-lable="email"><small >{mo.email}</small></td>
 <td data-lable="Status">{mo.status}</td>
-    <td className="" data-lable="Delete"><button onClick={() => handledelete(mo._id)} id="btn">Delete</button></td>
-<td className="" data-lable="Approved"><button onClick={() => handleupdate(mo._id)} id="btn">shipped</button></td> 
+    <td className="" data-lable="Action"><button onClick={() => handledelete(mo._id)} id="btn">Delete</button></td>
+
+<td className="" data-lable="Action"><button onClick={() => handleupdate(mo._id)} id="btn">shipped</button></td> 
 </tr>)
 }
 </tbody>

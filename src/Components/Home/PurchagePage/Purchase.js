@@ -156,10 +156,10 @@ const Purchase = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                 <h2>Purchase<span className="text-danger">Your Order </span></h2>
                    
-                    <input className="form-control my-3" {...register("displayName", { required: true, maxLength: 20 })} placeholder="Name" />
+                    <input className="form-control my-3" {...register("displayName", { required: true, maxLength: 20 })} placeholder="Name" required />
                     {/* <input className="form-control my-3" {...register("email")} placeholder="email" /> */}
-                    <input className="form-control my-3" type="number"  {...register("number")} placeholder="Number" />
-                    <input className="form-control my-3" {...register("adress")} placeholder="adress" />
+                    <input className="form-control my-3" type="number"  {...register("number")} placeholder="Number" required />
+                    <input className="form-control my-3" {...register("adress")} placeholder="adress" required />
 
                     {/* <input value={user?.email}  className="form-control my-3" {...register("bookingid")} placeholder="email" /> */}
 
