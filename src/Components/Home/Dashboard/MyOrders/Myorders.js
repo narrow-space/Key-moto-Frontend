@@ -19,7 +19,7 @@ const Myorders = () => {
     fetch(url)
     .then(res=>res.json())
     .then(data=>setOrders(data))
-  },[user.email,deleteCount])
+  },[deleteCount])
        
 
   const handledelete = (id) => {
@@ -65,8 +65,8 @@ const Myorders = () => {
             <div className="row">
 
                 {
-                             orders.map((pd,index)=>  <div className="col-md-4 my-4 ">
-
+                             orders.map(pd=><div pd={pd} key={pd._id} className="col-md-4 my-4 ">
+                                         
                              <div style={{ width: '22   rem' }}>
                        <Card.Img variant="top" src={pd?.img} />
                        <Card.Body>
@@ -93,7 +93,7 @@ const Myorders = () => {
                          <div className="d-flex justify-content-center">
                            <div className="mx-4">
                                <small className="fw-normal">ENGINE TYPE</small>
-                              <small>{pd?.enginetype}</small>
+                              <p>{pd.enginetype}</p>
                            </div>
 
                            <div  className="mx-4">
@@ -118,7 +118,10 @@ const Myorders = () => {
                        </Card.Body>
                      </div>
 
-                         </div> )
+                         </div>
+                               
+                                 
+                             )
 
 
                 }

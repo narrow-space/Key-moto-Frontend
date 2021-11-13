@@ -42,10 +42,17 @@ const Purchase = () => {
     console.log(user.email)
     const onSubmit = data => {
         
-        data.displayName=user?.displayName
+       
         data.price=foundservice?.price;
+
+        data.enginepower=foundservice?.enginepower;
+        data.enginetype=foundservice?.enginetype;
+        data.name=foundservice?.name;
+        data.type=foundservice?.type;
+        data.year=foundservice?.year;
+
         data.img=foundservice?.img;
-        data.description=foundservice?.displacement;
+        data.displacement=foundservice?.displacement;
         data.bookingid=foundservice._id;
         data.status="pending"
         data.email=user?.email
@@ -148,7 +155,7 @@ const Purchase = () => {
             <Alert variant="success" >Order Successfully</Alert>
 
         }
-                    <input className="form-control my-3" {...register("name", { required: true, maxLength: 20 })} placeholder="Name" />
+                    <input className="form-control my-3" {...register("displayName", { required: true, maxLength: 20 })} placeholder="Name" />
                     {/* <input className="form-control my-3" {...register("email")} placeholder="email" /> */}
                     <input className="form-control my-3" type="number"  {...register("number")} placeholder="Number" />
                     <input className="form-control my-3" {...register("adress")} placeholder="adress" />

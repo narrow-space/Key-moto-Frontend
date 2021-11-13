@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { Redirect, Route } from 'react-router';
+import { Redirect, Route, useHistory, useLocation } from 'react-router';
 import Useauth from '../../../Hooks/Useauth';
 
+
 const Adminroute = ({ children, ...rest }) => {
-    const {user,isloading,setIsloading,admin} = Useauth()
+               const history = useHistory()
+               const location = useLocation()
+               
+              
+         const {user,isloading,setIsloading,admin} = Useauth()
   
        if(!admin){
         return <Redirect to="/makeadmin"></Redirect>
           
        }
+
+      
    
    
     return (

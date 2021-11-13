@@ -29,6 +29,7 @@ import Adminroute from './Components/Home/Login/Adminroute/Adminroute';
 
 
 
+
 function App() {
   return (
     <div className="App">
@@ -40,50 +41,55 @@ function App() {
            <Home></Home>
           </Route>
 
-          <Route  path="/home">
+          <Route exact path="/home">
            <Home></Home>
           </Route>
 
-          <Privateroute   path="/bikes/:bikeId">
+          <Privateroute exact  path="/bikes/:bikeId">
           <Purchase></Purchase>
           </Privateroute>
-          <Route  path="/explore">
+          <Route exact path="/explore">
             <Explore></Explore>
           </Route>
-          <Route  path="/login">
+          <Route exact path="/login">
             <Login></Login>
           </Route>
-          <Route  path="/register">
+          <Route exact path="/register">
             <Register></Register>
           </Route>
-          <Route  path="/pay">
+          <Route exact path="/pay">
            <Pay></Pay>
           </Route>
 
-          <Route  path="/myorders">
+          <Privateroute exact path="/myorders">
            <Myorders></Myorders>
-          </Route>
+          </Privateroute>
 
-          <Route  path="/review">
+          <Privateroute exact path="/review">
            <Review></Review>
-          </Route>
+          </Privateroute>
 
-          <Adminroute  path="/makeadmin">
+          <Adminroute exact  path="/makeadmin">
          <Makeadmin></Makeadmin>
           </Adminroute>
 
-          <Route  path="/addproducts">
+          
+
+
+
+          <Adminroute exact path="/addproducts">
          <Addproducts></Addproducts>
-          </Route>
+          </Adminroute>
 
-          <Route  path="/manageallorders">
+          <Adminroute exact  path="/manageallorders">
          <Manageallorders></Manageallorders>
-          </Route>
+          </Adminroute>
 
 
-          <Route  path="/manageproducts">
+          <Adminroute exact path="/manageproducts">
         <Manageproducts></Manageproducts>
-          </Route>
+          </Adminroute>
+
 
           <Route exact path="*">
         <Notfound></Notfound>
