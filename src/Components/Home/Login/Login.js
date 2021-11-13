@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Alert, Col, Container, FloatingLabel, Form, Row } from 'react-bootstrap';
 import { Link, useLocation, useHistory } from 'react-router-dom';
+import swal from 'sweetalert';
 import Useauth from '../../Hooks/Useauth';
 import Header from '../Header/Header';
 
@@ -30,6 +31,9 @@ const Login = () => {
     e.preventDefault()
     EmailLogin(email, password)
       .then((res) => {
+        if(res.user.accessToken){
+          swal("Good job!", "Successfully Log In", "success");
+        }
         setIsLoading(true)
         setUser(res.user)
         console.log(user)
@@ -39,7 +43,13 @@ const Login = () => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        setAlert(errorCode)
+        if(errorCode=="auth/wrong-password"){
+          swal("Worng!", "Password Wrong", "warning");
+        }
+        if(errorCode=="auth/user-not-found"){
+          swal("Worng!", "Invalid Email & password", "warning");
+        }
+       
       })
       .finally(() => {
         setIsLoading(false)
@@ -73,14 +83,14 @@ const Login = () => {
               <Form.Control onBlur={handlePasswordChange} type="password" placeholder="Password" />
             </Form.Group>
 
-            {
+            {/* {
               alert == "auth/wrong-password" &&
               <Alert variant="danger">Password Wrong</Alert>
             }
             {
               alert == "auth/user-not-found" &&
               <Alert variant="danger">Invalid Email & password</Alert>
-            }
+            } */}
 
             <input className="btn btn-danger w-100" type="submit" value="LogIn" />
           </Form>

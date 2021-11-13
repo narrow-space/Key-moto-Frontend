@@ -5,6 +5,7 @@
                import React, { useState } from 'react';
                import Useauth from '../../Hooks/Useauth';
                import Header from '../Header/Header';
+import swal from 'sweetalert';
 
                const Register = () => {
                const [name, setName] = useState('')
@@ -40,6 +41,11 @@
                e.preventDefault()
                emailregister(email, password)
                .then((res) => {
+                  console.log(res.user.accessToken)
+                   if(res.user.accessToken){
+                     swal("Good job!", "Successfully Registered", "success");
+                   }
+
                setIsLoading(true)
 
                //////// send user data to database///
@@ -56,7 +62,13 @@
                .catch((error) => {
                const errorCode = error.code;
                const errorMessage = error.message;
-               setAlert(errorCode)
+               if(errorCode=="auth/weak-password" ){
+                  swal("Worng!", "password Should be 6 character", "warning");
+               }
+                if(errorCode=="auth/email-already-in-use"){
+                  swal("Worng!", "Email Already Used", "warning")
+                }
+
                })
                .finally(()=>{
                setIsLoading(false)
@@ -95,13 +107,10 @@
                <input onBlur={handleEmailChange} placeholder="Email" type="email" className="form-control mt-3" required />
 
                <input onBlur={handlepasswordChange} placeholder="Password" type="password" className="form-control mt-3" required />
-               {
-               alert =="auth/weak-password" &&
-               <Alert variant="danger">Password should be 6 Character</Alert>
-               } 
-               {
+              
+               {/* {
                   alert =="auth/email-already-in-use" && <Alert variant="danger">Email Already Used</Alert>
-               }
+               } */}
 
                <input className="from-btn mt-2 p-3" type="Submit" value="Submit" />
 
