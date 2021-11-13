@@ -35,7 +35,7 @@ const Makeadmin = () => {
                     if(data.modifiedCount== "0"){
                         swal({
                             title: "Wrong!",
-                            text: "He is Already an Admin ",
+                            text: "Please add Valid Email Who Already Registered",
                             icon: "warning",
                             button: "Ok",
                           });
@@ -71,7 +71,7 @@ const Makeadmin = () => {
                
 
 
-                <input className="form-control my-3"   {...register("email")} placeholder="email" />
+                <input className="form-control my-3"   {...register("email")} placeholder="email"  required/>
 
                 {/* <input  className="form-control my-3"   {...register("password")} placeholder="password" /> */}
 

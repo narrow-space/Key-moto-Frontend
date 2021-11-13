@@ -3,10 +3,14 @@ import { Alert } from 'react-bootstrap';
 import { useForm,} from "react-hook-form";
 import swal from 'sweetalert';
 import Footer from '../../../Footer/Footer';
+import Useauth from '../../../Hooks/Useauth';
 import Header from '../../Header/Header';
+
 const Addproducts = () => {
+    
     const [alert,setAlert]=useState('')
     const { register, handleSubmit,reset , formState: { errors } } = useForm();
+    const {admin} =Useauth()
    
     const onSubmit = data => {
         
@@ -35,6 +39,10 @@ const Addproducts = () => {
           
     
     }
+    
+   
+
+
     return (
         <>
         <Header></Header>

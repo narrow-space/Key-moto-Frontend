@@ -8,21 +8,19 @@ const Adminroute = ({ children, ...rest }) => {
                const history = useHistory()
                const location = useLocation()
                const redirect_uri = location.state?.from ||'/home'
-                const [loading,setLoading]=useState(true)
-           const {user,admin} = Useauth()
+               
+           const {user,admin,isloading} = Useauth()
   
-       if(loading){
-        return setLoading(false)
-          
-       }
-       
+           if(!admin){
+            return <Redirect to="/makeadmin"></Redirect>
+        }
       
    
    
     return (
         <Route
             {...rest}
-            render={({ location }) => user.email &&admin ? children : <Redirect
+            render={({ location }) => user.email && admin ? children : <Redirect
                 to={{
                     pathname: "/home",
                     state: { from: location }

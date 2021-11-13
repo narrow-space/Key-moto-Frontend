@@ -47,7 +47,8 @@ const Usefirebase = () => {
         .then(res=>res.json())
         .then(data=> 
             setAdmin(data.admin))
-            
+           
+           
         
        
        
