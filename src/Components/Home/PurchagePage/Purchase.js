@@ -8,6 +8,7 @@ import { useForm,} from "react-hook-form";
 import { Alert } from 'react-bootstrap';
 import Header from '../Header/Header';
 import Useauth from '../../Hooks/Useauth';
+import swal from 'sweetalert';
 
 const Purchase = () => {
     const {bikeId} =useParams()
@@ -73,10 +74,13 @@ const Purchase = () => {
 
         setAlert(data)
         if(data.insertedId){
-         
-            setTimeout(function() {
-                setAlert('')
-                }, 700);
+            swal({
+                title: "Good job!",
+                text: "Successfully Ordered",
+                icon: "success",
+                button: "Ok",
+              });
+           
         }
        
            
@@ -151,10 +155,7 @@ const Purchase = () => {
             <div className="w-50 mx-5 text-center">
                 <form onSubmit={handleSubmit(onSubmit)}>
                 <h2>Purchase<span className="text-danger">Your Order </span></h2>
-                    { alert.insertedId &&
-            <Alert variant="success" >Order Successfully</Alert>
-
-        }
+                   
                     <input className="form-control my-3" {...register("displayName", { required: true, maxLength: 20 })} placeholder="Name" />
                     {/* <input className="form-control my-3" {...register("email")} placeholder="email" /> */}
                     <input className="form-control my-3" type="number"  {...register("number")} placeholder="Number" />

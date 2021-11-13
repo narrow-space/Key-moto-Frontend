@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Alert } from 'react-bootstrap';
 import { useForm,} from "react-hook-form";
+import swal from 'sweetalert';
 import Footer from '../../../Footer/Footer';
 import Header from '../../Header/Header';
 const Addproducts = () => {
@@ -20,17 +21,18 @@ const Addproducts = () => {
         })
         .then(res=>res.json())
         .then(data=>{
-            setAlert(data)
-            
             if(data.insertedId){
-         
-                setTimeout(function() {
-                    setAlert('')
-                    }, 700);
+                swal({
+                    title: "Good job!",
+                    text: "Adding Product Successfully",
+                    icon: "success",
+                    button: "Ok",
+                  });
+                  reset()
             }
-            reset()
-            
         })
+            
+          
     
     }
     return (
@@ -40,10 +42,7 @@ const Addproducts = () => {
             <div className="w-50 mx-5 text-center ">
         <form onSubmit={handleSubmit(onSubmit)}>
         <h2>Add<span className="text-danger">a Products</span></h2>
-            { alert.insertedId &&
-    <Alert variant="success" >Add product Successfully</Alert>
-
-}
+   
             <input className="form-control my-3" {...register("name", { required: true, maxLength: 20 })} placeholder="Name" />
 
             

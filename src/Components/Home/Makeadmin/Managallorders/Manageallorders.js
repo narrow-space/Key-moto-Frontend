@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { Alert } from 'react-bootstrap';
 import Footer from '../../../Footer/Footer';
 import Header from '../../Header/Header';
+import swal from 'sweetalert';
+
 import './Manageallorders.css'
 
 const Manageallorders = () => {
 const [allorders, setAllorders] = useState([])
 const [deleteCount, setDeleteCount] = useState(false)
 const [isapproved, setIsapproved] = useState(false)
-const [alert, setAlert] = useState('')
+
 
 
 useEffect(() => {
@@ -18,33 +20,63 @@ fetch('https://powerful-ravine-38865.herokuapp.com/allorders')
 console.log(data)
 setAllorders(data)
 })
-}, [deleteCount, isapproved])
+}, [deleteCount,isapproved])
 
 //////delete orders//////
 
 const handledelete = (id) => {
-const procced = window.confirm('Are Youe Sure Want to Delete')
 
-if (procced) {
 
-fetch(`https://powerful-ravine-38865.herokuapp.com/deleteorders/${id}`, {
-method: 'DELETE',
-headers: {
-'content-type': 'application/json'
-},
 
+
+
+(swal({
+  title: "Are you sure?",
+  text: "Once deleted, you will not be able to recover this imaginary file!",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
 })
-.then(res => res.json())
-.then(result => {
-setDeleteCount(result)
+.then((willDelete)=> {
+  
+
+  if (willDelete) {
+   
+   
+    fetch(`https://powerful-ravine-38865.herokuapp.com/deleteorders/${id}`, {
+      method: 'DELETE',
+      headers: {
+      'content-type': 'application/json'
+      },
+      
+      })
+      .then(res => res.json())
+      .then(data=>{
+        setDeleteCount(data)
+      })
+      
+      
+    
+    
+  } 
+  
+  else {
+    
+    swal("Your imaginary file is safe!");
+  }
+  
+}))
+
+ 
+    
+ 
 
 
 
 
-})
 
 
-}
+
 
 
 
@@ -67,13 +99,18 @@ body: JSON.stringify({ status: "pending" })
 .then(res => res.json())
 .then(result => {
 setIsapproved(result)
-setAlert(result)
+
 console.log(result)
-if (result.modifiedCount) {
-setTimeout(function() {
-setAlert('')
-}, 3000);
+if(result.modifiedCount){
+    swal({
+        title: "Shipped",
+        text: "Order Shipped Successfully!",
+        icon: "success",
+        button: "Ok",
+      });
 }
+
+
 
 })
 }
@@ -97,13 +134,8 @@ return (
 <h2 className="text-center" >No booking <span style={{ "color": "red" }} >Yet Now!!!</span></h2>
 
 }
-{
 
-alert?.modifiedCount &&
 
-<Alert className="text-center" Alert variant="info">Order Shipped successfully</Alert>
-
-}
 
 
 

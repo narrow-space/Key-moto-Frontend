@@ -7,15 +7,15 @@ import Useauth from '../../../Hooks/Useauth';
 const Adminroute = ({ children, ...rest }) => {
                const history = useHistory()
                const location = useLocation()
-               
-              
-         const {user,isloading,setIsloading,admin} = Useauth()
+               const redirect_uri = location.state?.from ||'/home'
+                const [loading,setLoading]=useState(true)
+           const {user,admin} = Useauth()
   
-       if(!admin){
-        return <Redirect to="/makeadmin"></Redirect>
+       if(loading){
+        return setLoading(false)
           
        }
-
+       
       
    
    

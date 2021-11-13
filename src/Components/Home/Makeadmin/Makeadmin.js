@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Alert } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
+import swal from 'sweetalert';
 import Footer from '../../Footer/Footer';
 import Header from '../Header/Header';
 
 const Makeadmin = () => {
-    const [alert, setAlert] = useState('')
+    
     console.log(alert)
     const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
     const onSubmit = data => {
@@ -21,16 +22,30 @@ const Makeadmin = () => {
         })
             .then(res => res.json())
             .then(data => {
-                setAlert(data)
                 
-                if (data.modifiedCount) {
-
-                    setTimeout(function () {
-                        setAlert('')
-                    }, 700);
-                }
+                    if(data.modifiedCount){
+                        swal({
+                            title: "Good job!",
+                            text: "Admin added Successfully",
+                            icon: "success",
+                            button: "Ok",
+                          });
+                          reset()
+                    }
+                    if(data.modifiedCount== "0"){
+                        swal({
+                            title: "Wrong!",
+                            text: "He is Already an Admin ",
+                            icon: "warning",
+                            button: "Ok",
+                          });
+                        
+                          reset()
+                    }
+                   
+                
                 console.log(data)
-                reset()
+                
             })
     }
     return (
@@ -38,13 +53,7 @@ const Makeadmin = () => {
         <Header></Header>
         <div className="container">
 
-            {
-                alert?.modifiedCount &&
-
-                <Alert variant="success">Admin added Successfully</Alert>
-                
-                
-                }
+            
 
           
 
@@ -59,10 +68,7 @@ const Makeadmin = () => {
 
             <form onSubmit={handleSubmit(onSubmit)}>
                 <h2>Make<span className="text-danger">Admin</span></h2>
-                {alert.insertedId &&
-                    <Alert variant="success" >Review Successfully</Alert>
-
-                }
+               
 
 
                 <input className="form-control my-3"   {...register("email")} placeholder="email" />

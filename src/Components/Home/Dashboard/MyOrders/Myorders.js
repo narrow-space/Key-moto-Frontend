@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { Card, Col, Row, Button, } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import swal from 'sweetalert';
 import Footer from '../../../Footer/Footer';
 import Useauth from '../../../Hooks/Useauth';
 import Header from '../../Header/Header';
@@ -22,33 +23,95 @@ const Myorders = () => {
   },[deleteCount])
        
 
-  const handledelete = (id) => {
+//   const handledelete = (id) => {
 
-    const proceed = window.confirm('are sure want to delete???')
-     if(proceed){
+//     const proceed = window.confirm('are sure want to delete???')
+//      if(proceed){
          
-       fetch(`https://powerful-ravine-38865.herokuapp.com/deleteorder/${id}`, {
-           method: 'DELETE',
-           headers: {
-               'content-type': 'application/json'
-           },
+//        fetch(`https://powerful-ravine-38865.herokuapp.com/deleteorder/${id}`, {
+//            method: 'DELETE',
+//            headers: {
+//                'content-type': 'application/json'
+//            },
 
-       })
-           .then(res => res.json())
-           .then(result => {
+//        })
+//            .then(res => res.json())
+//            .then(result => {
 
-               setDeleteCount(result)
+//                setDeleteCount(result)
 
-               console.log(result);
+//                console.log(result);
 
-           }
-           )
+//            }
+//            )
 
-     }
+//      }
 
 
 
-   }
+//    }
+
+
+
+
+   const handledelete = (id) => {
+
+
+
+
+
+(swal({
+  title: "Are you sure?",
+  text: "Once deleted, you will not be able to recover this imaginary file!",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete)=> {
+  
+
+  if (willDelete) {
+   
+   
+    fetch(`https://powerful-ravine-38865.herokuapp.com/deleteorder/${id}`, {
+      method: 'DELETE',
+      headers: {
+      'content-type': 'application/json'
+      },
+      
+      })
+      .then(res => res.json())
+      .then(data=>{
+        setDeleteCount(data)
+      })
+      
+      
+    
+    
+  } 
+  
+  else {
+    
+    swal("Your imaginary file is safe!");
+  }
+  
+}))
+
+ 
+    
+ 
+
+
+
+
+
+
+
+
+
+
+}
+
   
 
 

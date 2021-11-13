@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Alert } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
+import swal from 'sweetalert';
 import Useauth from '../../../Hooks/Useauth';
 
 const Review = () => {
@@ -25,10 +26,13 @@ const Review = () => {
 
                 setAlert(data)
                 if (data.insertedId) {
-
-                    setTimeout(function () {
-                        setAlert('')
-                    }, 700);
+                    swal({
+                        title: "Good job!",
+                        text: "Review added Successfully",
+                        icon: "success",
+                        button: "Ok",
+                      });
+                   
                 }
 
 
@@ -54,10 +58,7 @@ const Review = () => {
 
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <h2>Please <span className="text-danger">Make a Review</span></h2>
-                            {alert.insertedId &&
-                                <Alert variant="success" >Review Successfully</Alert>
-
-                            }
+                            
                             <input value={user.displayName} className="form-control my-3" {...register("name", { required: true, maxLength: 20 })} placeholder="Name" />
 
                             {/* <input className="form-control my-3" {...register("email")} placeholder="email" /> */}
